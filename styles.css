@@ -42,7 +42,7 @@ button, .button {
     background: linear-gradient(90.94deg, #438ABA 36.39%, #2374AB 100%);
     border-radius: 30px;
     border: none;
-    padding: 17px 30px;
+    padding: 17px 25px;
     color:#EBEBEB;    
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -56,13 +56,18 @@ button, .button {
     border-style: solid;
 }
 
-.underlined-titles > h2 {
+.underlined-titles h2 {
     width: 200px;
     margin: 0;
     text-align: center;
     border-width: 0 0 3px 0;
     border-color: #2374AB;
     border-style: solid;
+}
+
+.page-title {
+    text-transform: uppercase;
+    margin-bottom: 40px;
 }
 
 
@@ -116,7 +121,7 @@ button, .button {
     width: 100%;
     position: relative;
 }
-  
+
 .mySlides {
     display: none;
     height: 500px;
@@ -181,7 +186,7 @@ to {opacity: 1}
 
 .movie-posters{
     width: 100%;
-    padding: 40px 0;
+    border-spacing: 30px 40px;
 }
 
 .movie-posters td {
@@ -190,7 +195,7 @@ to {opacity: 1}
 }
 
 .movie-posters img {
-    width: 200px;
+    width: 100%;
     height: 300px;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -206,10 +211,127 @@ to {opacity: 1}
     padding-top: 0;
 }
 
+/*MOVIES PAGE*/
+
+.movie-tabs ul {
+    list-style-type: none;
+    margin: 0 0 40px 0;
+    padding: 0;
+    border-width: 0 0 1px 0;
+    border-color: #303030;
+    border-style: solid;
+}
+
+.movie-tabs ul li {
+    display: inline-block;
+}
+
+.movie-tabs h2 {
+    display: inline-block;
+    margin: 0;
+    width: 200px;
+    text-align: center;
+    opacity: 0.3;
+}
+
+.movie-tabs ul li.active h2 {
+    border-width: 0 0 3px 0;
+    border-color: #2374AB;
+    border-style: solid;
+    opacity: 1;
+}
+
+.movie-posters .button {
+    display: block;
+    margin-top: 20px;
+}
+
+.movie-posters h3 {
+    margin-bottom: 0;
+}
+
+/*showtimes*/
+
+.date-tabs ul {
+    list-style-type: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+    border-width: 0 0 1px 0;
+    border-color: #303030;
+    border-style: solid;
+}
+
+.date-tabs ul li {
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+
+.date-tabs h3 {
+    display: inline-block;
+    margin: 0;
+    width: 200px;
+    text-align: center;
+    opacity: 0.3;
+}
+
+.date-tabs ul li.active h3 {
+    border-width: 0 0 3px 0;
+    border-color: #2374AB;
+    border-style: solid;
+    opacity: 1;
+}
+
+.date-tab {
+    border-spacing: 10px 0;
+}
+
+.date-tab .timeslots td {
+    background-color: #8A8A8A;
+    text-align: center;
+    border-radius: 10px;
+    width: 150px;
+}
+
+.date-tab .timeslots td button {
+    background: transparent;
+    padding: 0;
+    width: 100%;
+    height: 50px;
+}
+
+/*movie-details*/
+.movie-info .container table:first-child h1 {
+    margin-bottom: 0;
+}
+
+.movie-info .container table:first-child td:first-child {
+    width: 50%;
+    vertical-align: top;
+}
+
+.movie-info .container table:first-child td:first-child {
+    padding-right: 30px;
+}
+
+.movie-info .container table:first-child td img {
+    width: 100%;
+    border-radius: 30px;
+}
+
+.movie-info .container table:first-child td .rating {
+    margin-bottom: 40px;
+}
+
+.movie-info .container h1.underlined-titles {
+    margin-bottom: 0;
+}
+
 /*FOOTER*/
 
 #footer {
     width: 100%;
+    background-color: #000;
 }
 
 #footer .container {
