@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts/tabs.js"></script>
+</head>
+
+<body>
+
+<!--start of navbar-->
+<div id="nav">
+    <div class="container">
+        <img src="images/logo_light.svg">
+        <ul>
+            <li><a href="/index.html">HOME</a></li>
+            <li><a href="/movies.html">MOVIES</a></li>
+            <li><a href="#">SHOWTIMES</a></li>
+            <li><a href="#">CONTACT</a></li>
+            <li><a href="#"><img width="24px" height="24px" src="images/cart_outlined.svg"></a></li>
+        </ul>
+    </div>
+</div>
+<!--end of navbar-->
+
+<!--start of main content-->
+<div class="section showtimes"> 
+    <div class="container">
+        <h1 class="page-title">SHOWTIMES</h1>
+        <div class="date-tabs">
+            <ul>
+                <!--TODO: print each date tab toggle using a loop, replace ID & text-->
+                <!--start php-->
+                <li id="16-nov" class="date active"><h3>MON, 16 NOV</h3></li>
+                <!--end php-->
+                <!--dummy start-->
+                <li id="17-nov" class="date"><h3>TUE, 17 NOV</h3></li>
+                <li id="18-nov" class="date"><h3>WED, 18 NOV</h3></li>
+                <li id="19-nov" class="date"><h3>THU, 19 NOV</h3></li>
+                <li id="20-nov" class="date"><h3>FRI, 20 NOV</h3></li>
+                <!--dummy end-->
+            </ul>
+        </div>
+
+        <!--TODO: print each date tab using a loop, replace ID, title of movies & timeslots (use another loop for list of movie & timeslots)-->
+        <!--start php-->
+        <table class="date-tab" id="16-nov-tab">
+            <tr>
+                <td><h3>Mulan</h3></td>
+            </tr>
+            <tr class="timeslots">
+                <td>9:00</td>
+                <td>13:00</td>
+                <td>16:00</td>
+                <td>19:00</td>
+                <td>22:00</td>
+            </tr>
+            <tr>
+                <td><h3>Mulan</h3></td>
+            </tr>
+            <tr class="timeslots">
+                <td>9:00</td>
+                <td>13:00</td>
+                <td>16:00</td>
+                <td>19:00</td>
+                <td>22:00</td>
+            </tr>
+        </table>
+        <!--end php-->
+        <!--dummy start-->
+        <table class="date-tab" id="17-nov-tab">
+            <tr>
+                <td>2</td>
+            </tr>
+        </table>
+        <table class="date-tab" id="18-nov-tab">
+            <tr>
+                <td>3</td>
+            </tr>
+        </table>
+        <table class="date-tab" id="19-nov-tab">
+            <tr>
+                <td>4</td>
+            </tr>
+        </table>
+        <table class="date-tab" id="20-nov-tab">
+            <tr>
+                <td>5</td>
+            </tr>
+        </table>
+        <!--dummy end-->
+    </div>
+</div>
+
+
+<!--end of main content-->
+
+
+
+<!--start of footer-->
+<div id="footer">
+    <div class="container">
+        <img src="images/logo_light.svg">
+            <table>
+                <tr>
+                    <td>
+                        <h4>SITE MAP</h4>
+                        <ul>
+                            <li><a href="#">HOME</a></li>
+                            <li><a href="#">MOVIES</a></li>
+                            <li><a href="#">SHOWTIMES</a></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <h4>CONTACT</h4>
+                        <ul>
+                            <li><img src="images/address_outlined.svg"> 123 SUNSHINE AVENUE<br>#01-35 S123456</li>
+                            <li><img src="images/call_outlined.svg"> +65 6876 5432</li>
+                            <li><img src="images/email_outlined.svg"> INFO@MOONLIGHT.COM.SG</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>      
+    </div>
+</div>
+<!--end of footer-->
+
+<script src="scripts/showtimesR.js"></script>
+</body>
+

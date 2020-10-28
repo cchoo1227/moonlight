@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts/tabs.js"></script>
+</head>
+
+<body>
+
+<!--start of navbar-->
+<div id="nav">
+    <div class="container">
+        <img src="images/logo_light.svg">
+        <ul>
+            <li><a href="/index.html">HOME</a></li>
+            <li><a href="/movies.html">MOVIES</a></li>
+            <li><a href="#">SHOWTIMES</a></li>
+            <li><a href="#">CONTACT</a></li>
+            <li><a href="#"><img width="24px" height="24px" src="images/cart_outlined.svg"></a></li>
+        </ul>
+    </div>
+</div>
+<!--end of navbar-->
+
+<!--start of main content-->
+<div class="section all-movies"> 
+    <div class="container">
+        <h1 class="page-title">ALL MOVIES</h1>
+        <div class="movie-tabs">
+            <ul>
+                <li class="movie active" id="now-showing"><h2>NOW SHOWING</h2></li>
+                <li id="coming-soon" class="movie"><h2>COMING SOON</h2></li>
+            </ul>
+        </div>
+        <table class="movie-tab movie-posters" id="now-showing-tab">
+            <tr>
+                <td>
+                    <img src="images/blackpanther-poster.jpg">
+                    <h3>Black Panther</h3>
+                    <div>PG13</div>
+                    <form method="get">
+                        <button value="1" type="submit" name="movie" formaction="movie_details.php">BUY TICKETS NOW</button>
+                    </form>
+                </td>
+                <td>
+                    <img src="images/mulan-poster.jpg">
+                    <h3>Mulan</h3>
+                    <div>PG13</div>
+                    <form method="get">
+                        <button value="2" type="submit" name="movie" formaction="movie_details.php">BUY TICKETS NOW</button>
+                    </form>
+                </td>
+                <td>
+                    <img src="images/parasite-poster.jpg">
+                    <h3>Parasite</h3>
+                    <div>R</div>
+                    <form method="get">
+                        <button value="3" type="submit" name="movie" formaction="movie_details.php">BUY TICKETS NOW</button>
+                    </form>
+                </td>
+                <td>
+                    <img src="images/tenet-poster.jpg">
+                    <h3>Tenet</h3>
+                    <div>PG13</div>
+                    <form method="get">
+                        <button value="4" type="submit" name="movie" formaction="movie_details.php">BUY TICKETS NOW</button>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="images/beauty-poster.jpg">
+                    <h3>Beauty and the Beast</h3>
+                    <div>PG13</div>
+                    <form method="get">
+                        <button value="5" type="submit" name="movie" formaction="movie_details.php">BUY TICKETS NOW</button>
+                    </form>
+                </td>
+                <td>
+                    <img src="images/avengers-poster.jpg">
+                    <h3>Avengers: Endgame</h3>
+                    <div>PG13</div>
+                    <form method="get">
+                        <button value="6" type="submit" name="movie" formaction="movie_details.php">BUY TICKETS NOW</button>
+                    </form>
+                </td>
+                <td>
+                    <img src="images/aladdin-poster.jpg">
+                    <h3>Aladdin</h3>
+                    <div>PG13</div>
+                    <form method="get">
+                        <button value="7" type="submit" name="movie" formaction="movie_details.php">BUY TICKETS NOW</button>
+                    </form>
+                </td>
+                <td>
+                    <img src="images/bladerunner-poster.jpg">
+                    <h3>Blade Runner 2049</h3>
+                    <div>R</div>
+                    <form method="get">
+                        <button  value="8" type="submit" name="movie" formaction="movie_details.php">BUY TICKETS NOW</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <table class="movie-tab movie-posters" id="coming-soon-tab">
+            <tr>
+                <td>
+                    <img src="images/solo-poster.jpeg">
+                    <h3>SOLO</h3>
+                    <div>PG13</div>
+                </td>
+                <td>
+                    <img src="images/starisborn-poster.jpg">
+                    <h3>A Star is Born</h3>
+                    <div>PG13</div>
+                </td>
+                <td>
+                    <img src="images/birdsofprey-poster.jpg">
+                    <h3>Birds of Prey</h3>
+                    <div>PG13</div>
+                </td>
+                <td>
+                    <img src="images/dora-poster.jpg">
+                    <h3>Dora</h3>
+                    <div>PG13</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<!--end of main content-->
+
+
+
+<!--start of footer-->
+<div id="footer">
+    <div class="container">
+        <img src="images/logo_light.svg">
+            <table>
+                <tr>
+                    <td>
+                        <h4>SITE MAP</h4>
+                        <ul>
+                            <li><a href="#">HOME</a></li>
+                            <li><a href="#">MOVIES</a></li>
+                            <li><a href="#">SHOWTIMES</a></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <h4>CONTACT</h4>
+                        <ul>
+                            <li><img src="images/address_outlined.svg"> 123 SUNSHINE AVENUE<br>#01-35 S123456</li>
+                            <li><img src="images/call_outlined.svg"> +65 6876 5432</li>
+                            <li><img src="images/email_outlined.svg"> INFO@MOONLIGHT.COM.SG</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>      
+    </div>
+</div>
+<!--end of footer-->
+
+<script src="scripts/moviesR.js"></script>
+</body>
+
