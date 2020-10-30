@@ -31,7 +31,7 @@ function tabToggle(event) {
 
     for (var i = 0; i < tabItems.length; i++) {
         if (tabItems[i].id == activeTab) {
-            tabItems[i].style.display = "block";
+            tabItems[i].style.display = "flex";
         }
         else {
             tabItems[i].style.display = "none";

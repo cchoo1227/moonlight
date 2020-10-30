@@ -50,10 +50,11 @@ button, .button {
     cursor: pointer;
 }
 
-.underlined-titles.dark {
+.underlined-titles {
     border-width: 0 0 1px 0;
     border-color: #303030;
     border-style: solid;
+    margin-bottom: 40px;
 }
 
 .underlined-titles h2 {
@@ -68,6 +69,11 @@ button, .button {
 .page-title {
     text-transform: uppercase;
     margin-bottom: 40px;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 
@@ -184,23 +190,6 @@ to {opacity: 1}
 
 /*HOMEPAGE MOVIE POSTERS & SECTION TITLES*/
 
-.movie-posters{
-    width: 100%;
-    border-spacing: 30px 40px;
-}
-
-.movie-posters td {
-    width: 25%;
-    text-align: center;
-}
-
-.movie-posters img {
-    width: 100%;
-    height: 300px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
 .section#coming-soon {
     background-position: top;
     background-image: url(images/comingsoon-bg.svg);
@@ -241,9 +230,20 @@ to {opacity: 1}
     opacity: 1;
 }
 
-.movie-posters .button {
-    display: block;
-    margin-top: 20px;
+.flex.movie-posters > div {
+    flex: 1 0 21%; /* explanation below */
+    margin: 0 10px 40px;
+    text-align: center;
+}
+
+.flex.movie-posters img {
+    width: 100%;
+    height: 340px;
+    border-radius: 12px;
+}
+
+.movie-posters button {
+    margin-top: 15px;
 }
 
 .movie-posters h3 {
