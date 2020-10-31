@@ -1,4 +1,6 @@
-<?php include 'getMovies.php';?>
+<?php 
+session_start();
+include 'php/getMovies.php';?>
 
 <!DOCTYPE html>
 
@@ -11,7 +13,41 @@
 
 <?php 
 
+if (isset($_POST["username"]) && isset($_POST["password"])) {
 
+    $username = $_POST["username"];
+    $password = md5($_POST["password"]);
+
+    $servername = "localhost";
+    $usernameDB = "f38ee";
+    $passwordDB = "f38ee";
+    $dbname = "f38ee";
+    $movie = $_GET['movie'];
+
+    // Create connection
+    $conn = mysqli_connect($servername, $usernameDB, $passwordDB, $dbname);
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $getAdmin = "SELECT * FROM admin WHERE username = '" .$username. "' AND `password` = '" .$password. "'";
+    $resultsAdmin = mysqli_query($conn, $getAdmin);
+
+
+    if (mysqli_num_rows($resultsAdmin) > 0) {
+
+        $_SESSION["valid_admin"] = $username;
+
+    }
+
+}
+
+if (isset($_POST["empty"])) {
+    unset($_SESSION["valid_admin"]);
+    header("Location: http://192.168.56.2/f38ee/moonlight/admin-login.php");
+    exit();
+}
 
 
 ?>
@@ -22,20 +58,26 @@
         <img src="images/logo_light.svg">
         <ul>
             <li><h2 style="display:inline-block; margin-right: 30px;">Admin Page</h2></li>
-            <li><button>Logout</button></li>
+            <?php if(isset($_SESSION["valid_admin"])): ?>
+            <form method="post" id="logout-btn">
+                <li><button name="empty" type="submit" value="true" formaction="<?php echo $_SERVER['PHP_SELF']; ?>">Logout</button></li>
+            </form>
+            <?php endif; ?>
         </ul>
     </div>
 </div>
 <!--end of navbar-->
 
 <!--start of main content-->
+
 <div class="section all-movies"> 
     
+    <?php if(isset($_SESSION["valid_admin"])): ?>
     <div class="container">
         <div class="flex admin-movie-info">
             <div>
                 <h2>ADD NEW MOVIE</h2>
-                <form action="addMovie.php" method="post">
+                <form action="php/addMovie.php" method="post">
                     <div>Movie Type: 
                     <select required name="movieType" id="movieType">
                             <option value="movies">Now Showing</option>
@@ -90,13 +132,13 @@
                     </div>
                     <div>Movie Desc: <textarea name="movieDesc" id="movieDesc"></textarea></div>
                     <div>Image URL: <input type="url" name="movieImg" id="movieImg"></div>
-                    <button formaction="modifyMovie.php" type="submit">Modify Movie</button>
-                    <button formaction="deleteMovie.php" type="submit">Delete Movie</button>
+                    <button formaction="php/modifyMovie.php" type="submit">Modify Movie</button>
+                    <button formaction="php/deleteMovie.php" type="submit">Delete Movie</button>
                  </form>
             </div>
             <div>
                 <h2>ADD COMING SOON MOVIE TO NOW SHOWING</h2>
-                <form action="changeComingSoon.php" method="post">
+                <form action="php/changeComingSoon.php" method="post">
                     <div>Select Movie:
                     <select required name="movieId">
                         <?php foreach($comingSoonArray as $comingSoon): ?>
@@ -109,7 +151,7 @@
             </div>
             <div>
             <h2>ADD SCREENING TO NOW SHOWING MOVIE</h2>
-            <form method="post" action="addScreening.php">
+            <form method="post" action="php/addScreening.php">
                 <div>Select Movie: 
                 <select required name="movieId">
                         <?php foreach($movieArray as $movie): ?>
@@ -130,8 +172,37 @@
                 <button type="submit">ADD SCREENING</button>
             </form>
             </div> 
+            <div>
+            <h2>ADD NEW ADMIN</h2>
+            <form method="post" action="php/addAdmin.php">
+                <div>Username: <input required name="username"></div>
+                <div>Password: <input required type="password" name="password"></div>
+                <div>Confirm Password: <input required type="password" name="confPassword"></div>
+                <button type="submit">ADD Admin</button>
+            </form>
+            </div>
+            <div>
+            <h2>DELETE ADMIN</h2>
+            <form method="post" action="php/deleteAdmin.php">
+                <div>Select Admin: <select name="username">
+                <?php foreach($adminArray as $admin): ?>
+                            <option value="<?php echo $admin['username']; ?>"><?php echo $admin['username']; ?></option>
+                <?php endforeach; ?>
+                </select>
+                </div>
+                <div>Password: <input type="password" name="password"></div>
+                <button type="submit">DELETE ADMIN</button>
+            </form>
+            </div>
         </div> 
     </div>  
+
+    <?php else: ?>
+    <div class="container">
+        <h2>Error with log in, please try again.</h2>
+        <a class="button" href="admin-login.php">Log In</a>
+    </div>
+    <?php endif ?>
 
 </div>
 
@@ -141,31 +212,8 @@
 
 
 <!--start of footer-->
-<div id="footer">
-    <div class="container">
-        <img src="images/logo_light.svg">
-            <table>
-                <tr>
-                    <td>
-                        <h4>SITE MAP</h4>
-                        <ul>
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="#">MOVIES</a></li>
-                            <li><a href="#">SHOWTIMES</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <h4>CONTACT</h4>
-                        <ul>
-                            <li><img src="images/address_outlined.svg"> 123 SUNSHINE AVENUE<br>#01-35 S123456</li>
-                            <li><img src="images/call_outlined.svg"> +65 6876 5432</li>
-                            <li><img src="images/email_outlined.svg"> INFO@MOONLIGHT.COM.SG</li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>      
-    </div>
-</div>
+<?php include 'footer.php' ?>
+
 <!--end of footer-->
 <script src="scripts/adminR.js"></script>
 <?php mysqli_close($conn); ?>

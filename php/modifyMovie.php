@@ -40,6 +40,8 @@ foreach ($form as $key => $value) {
 
 }
 mysqli_close($conn);
+header("Location: http://192.168.56.2/f38ee/moonlight/admin.php");
+exit();
 
 //header('Location: admin.php');
 //exit();

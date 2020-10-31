@@ -1,4 +1,4 @@
-<?php include 'getMovies.php';
+<?php include 'php/getMovies.php';
 session_start();
 $_SESSION['cart'] = [];
 $_SESSION['booking'] = [];?>
@@ -11,18 +11,7 @@ $_SESSION['booking'] = [];?>
 
 <body>
 <!--start of navbar-->
-<div id="nav">
-    <div class="container">
-        <a href="index.php"><img src="images/logo_light.svg"></a>
-        <ul>
-            <li><a href="index.php">HOME</a></li>
-            <li><a href="movies.php">MOVIES</a></li>
-            <li><a href="showtimes.php">SHOWTIMES</a></li>
-            <li><a href="#">CONTACT</a></li>
-            <li><a href="#"><img width="24px" height="24px" src="images/cart_outlined.svg"></a></li>
-        </ul>
-    </div>
-</div>
+<?php include 'navbar.php' ?>
 <!--end of navbar-->
 
 <!--start of banner-->
@@ -62,10 +51,12 @@ $_SESSION['booking'] = [];?>
         </div>
         <div class="flex movie-posters movie-tab" id="now-showing-tab"> 
             <?php for($i = 0; $i < 4 ; $i++): ?> 
-                <div>   
-                    <a href="movie_details.php?movie=<?php echo $i + 1; ?>"><img src="<?php echo $movieArray[$i]["image"]; ?>"></a>
-                </div>
-            <?php endfor; ?>           
+                <?php if($movieArray[$i]['image'] !== null): ?>
+                    <div>   
+                        <a href="movie_details.php?movie=<?php echo $i + 1; ?>"><img src="<?php echo $movieArray[$i]["image"]; ?>"></a>
+                    </div>
+                <?php endif; ?>  
+            <?php endfor; ?>         
         </div>
     </div>
 </div>
@@ -77,9 +68,11 @@ $_SESSION['booking'] = [];?>
         </div>
         <div class="flex movie-posters movie-tab" id="now-showing-tab"> 
             <?php for($i = 0; $i < 4 ; $i++): ?> 
-                <div>   
-                    <img src="<?php echo $comingSoonArray[$i]['image']; ?>">
-                </div>
+                <?php if($comingSoonArray[$i]['image'] !== null): ?>
+                    <div>   
+                        <img src="<?php echo $comingSoonArray[$i]['image']; ?>">
+                    </div>
+                <?php endif; ?>
             <?php endfor; ?>           
         </div>
     </div>
@@ -90,31 +83,7 @@ $_SESSION['booking'] = [];?>
 
 
 <!--start of footer-->
-<div id="footer">
-    <div class="container">
-        <img src="images/logo_light.svg">
-            <table>
-                <tr>
-                    <td>
-                        <h4>SITE MAP</h4>
-                        <ul>
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="#">MOVIES</a></li>
-                            <li><a href="#">SHOWTIMES</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <h4>CONTACT</h4>
-                        <ul>
-                            <li><img src="images/address_outlined.svg"> 123 SUNSHINE AVENUE<br>#01-35 S123456</li>
-                            <li><img src="images/call_outlined.svg"> +65 6876 5432</li>
-                            <li><img src="images/email_outlined.svg"> INFO@MOONLIGHT.COM.SG</li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>      
-    </div>
-</div>
+<?php include 'footer.php' ?>
 <!--end of footer-->
 
 <script src="scripts/home-banner.js"></script>

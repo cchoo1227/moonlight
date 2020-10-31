@@ -25,5 +25,7 @@ else {
 
 $delete = $sql = "DELETE FROM comingSoon WHERE comingSoonId = " .$id; 
 mysqli_query($conn, $sql);
-mysqli_close($conn);   
+mysqli_close($conn); 
+header("Location: http://192.168.56.2/f38ee/moonlight/admin.php");
+exit();  
 ?>

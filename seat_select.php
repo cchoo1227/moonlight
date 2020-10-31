@@ -1,5 +1,5 @@
 <?php 
-include 'getMovies.php';
+include 'php/getMovies.php';
 session_start(); ?>
 <!DOCTYPE html>
 
@@ -11,18 +11,7 @@ session_start(); ?>
 <body>
 
 <!--start of navbar-->
-<div id="nav">
-    <div class="container">
-        <img src="images/logo_light.svg">
-        <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">MOVIES</a></li>
-            <li><a href="#">SHOWTIMES</a></li>
-            <li><a href="#">CONTACT</a></li>
-            <li><a href="#"><img width="24px" height="24px" src="images/cart_outlined.svg"></a></li>
-        </ul>
-    </div>
-</div>
+<?php include 'navbar.php' ?>
 <!--end of navbar-->
 
 <?php 
@@ -182,33 +171,9 @@ session_start(); ?>
 
 
 <!--start of footer-->
-<div id="footer">
-    <div class="container">
-        <img src="images/logo_light.svg">
-            <table>
-                <tr>
-                    <td>
-                        <h4>SITE MAP</h4>
-                        <ul>
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="#">MOVIES</a></li>
-                            <li><a href="#">SHOWTIMES</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <h4>CONTACT</h4>
-                        <ul>
-                            <li><img src="images/address_outlined.svg"> 123 SUNSHINE AVENUE<br>#01-35 S123456</li>
-                            <li><img src="images/call_outlined.svg"> +65 6876 5432</li>
-                            <li><img src="images/email_outlined.svg"> INFO@MOONLIGHT.COM.SG</li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>      
-    </div>
-</div>
+<?php include 'footer.php' ?>
 <!--end of footer-->
-
+<?php mysqli_close($conn); ?>
 <script src="scripts/bookingR.js"></script>
 </body>
 

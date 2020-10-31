@@ -79,7 +79,6 @@ button, .button {
 .flex.two > div {
     flex: 1 0 45%;
     margin: 10px;
-    justify-: center;
 }
 
 /*NAV BAR*/
@@ -381,6 +380,10 @@ to {opacity: 1}
 
 #modify-comingSoonMovies {
     display: none;
+}
+
+#logout-btn {
+    display: inline-block;
 }
 
 /*TO WEIFAN: ADD ANY NEW CSS BELOW*/

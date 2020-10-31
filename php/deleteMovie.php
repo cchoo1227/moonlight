@@ -1,8 +1,8 @@
 <?php 
 
 $servername = "localhost";
-$username = "f38ee";
-$password = "f38ee";
+$usernameDB = "f38ee";
+$passwordDB = "f38ee";
 $dbname = "f38ee";
 
 $movieType = $_POST["movieType"];
@@ -18,7 +18,7 @@ elseif ($movieType == "comingSoon") {
 }
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $usernameDB, $passwordDB, $dbname);
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -33,6 +33,8 @@ else {
     echo "fail";
 }    
 mysqli_close($conn);
+header("Location: http://192.168.56.2/f38ee/moonlight/admin.php");
+exit();
 //header('Location: admin.php');
 //exit();
 

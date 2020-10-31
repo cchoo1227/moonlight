@@ -58,4 +58,16 @@ if (mysqli_num_rows($resultsScreenings) > 0) {
     }
 }
 
+$getAdmin = "SELECT * FROM admin";
+$resultsAdmin = mysqli_query($conn, $getAdmin);
+$adminArray = [];
+
+if (mysqli_num_rows($resultsAdmin) > 0) {
+    // output data of each row
+    while($rowE = mysqli_fetch_assoc($resultsAdmin)) {    
+        array_push($adminArray, $rowE);
+    }
+}
+
+
 ?>

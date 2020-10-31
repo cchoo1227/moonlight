@@ -22,4 +22,6 @@ $addMovie = "INSERT INTO " .$movieType. " (name, `desc`, rating, image) VALUES (
 mysqli_query($conn, $addMovie);
 
 mysqli_close($conn);
+header("Location: http://192.168.56.2/f38ee/moonlight/admin.php");
+exit();
 ?>
