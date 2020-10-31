@@ -1,3 +1,5 @@
+<?php session_start();
+include 'getMovies.php';?>
 <!DOCTYPE html>
 
 <head>
@@ -20,20 +22,40 @@
     </div>
 </div>
 <!--end of navbar-->
+<?php
 
-<div class="section" id="shopping-cart"> <!--TO WEIFAN: This is a 'SECTION' div. Use one 'SECTION' div for every horizontal section of content. E.g. I used one section for 'Now Showing' and another section for 'Coming Soon'.-->
-    <div class="container"> <!--TO WEIFAN: This is a 'CONTAINER' div. There is one 'CONTAINER' div within every 'SECTION' div. Replace ALL the code in the 'CONTAINER' div with your own code.-->
+$query  = explode('&', $_SERVER['QUERY_STRING']);
+$params = array();
+foreach( $query as $param )
+{
+// prevent notice on explode() if $param has no '='
+if (strpos($param, '=') === false) $param += '=';
+
+list($name, $value) = explode('=', $param, 2);
+$params[urldecode($name)][] = urldecode($value);
+}
+
+foreach($params["selectedCart"] as $selectedIndex) {
+    unset($_SESSION['cart'][(int)$selectedIndex]);
+}
+
+$_SESSION['cart'] = array_values($_SESSION['cart']);
+
+?>
+
+<div class="section" id="shopping-cart"> 
+    <div class="container"> 
         <div class="cart-title">
             <h1>Shopping Cart</h1>
         </div>
 		
-        <form method="POST" action="shoppingcart.php" id="shoppingcartForm">
+        <form method="get" id="shoppingcartForm">
         <table class="shopping-cart" border="0">
 		  <thead >
 			<tr class="whiteunderline">
-			<th></th>
+                
 			<th id="booking" >Bookings</th>
-			<th id="noOfTickets">No. of Tickets</th>
+			<th id="noOfTickets">Seats</th>
 			<th id="totalPrice">Total Price</th>
 			<th id="actions">Actions</th>
 			
@@ -42,16 +64,33 @@
 			
 		  </thead>
 		  <tbody>
-		  
+          <?php $i = 0; ?>
+          <?php foreach($_SESSION['cart'] as $cartItem): ?>
 			<tr>
-			<td>h1</td>
-			<td>h1</td>
-			<td>h1</td>
-			<td>h1</td>
-			<td>h1</td>
-			</tr>
+            <td>
+                <?php 
+                
+                    echo $cartItem["movieName"]. "<br>";
+                    echo $cartItem["date"]. " , " .$cartItem["time"];
+                
+                ?>
+            </td>
+            <td>
+                <?php 
+                    foreach($cartItem["seats"] as $seat) {
+                        echo $seat. " ";
+                    }
+                ?>
+            </td>
+			<td><?php echo "$" .$cartItem["totalPrice"] ?></td>
+			<td><input type="checkbox" value="<?php echo $i ?>" name="selectedCart"></td>
+            </tr>
+        <?php $i++ ?>
+        <?php endforeach; ?>
 		  </tbody>
-		</table>
+        </table>
+        <button type="submit" formaction="<?php echo $_SERVER['PHP_SELF']?>">Delete</button>
+        <button type="submit" formaction="#">Make Payment</button>
 		</form>
     </div>
 </div> 

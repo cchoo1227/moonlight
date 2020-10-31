@@ -76,6 +76,11 @@ button, .button {
     flex-wrap: wrap;
 }
 
+.flex.two > div {
+    flex: 1 0 45%;
+    margin: 10px;
+    justify-: center;
+}
 
 /*NAV BAR*/
 
@@ -459,8 +464,27 @@ to {opacity: 1}
 	border-bottom: 2px solid white;
 }
 
+.shopping-cart td {
+    text-align: center;
+}
+
 
 /*BOOKING page*/
+
+.booking-table {
+    border-spacing: 30px;
+}
+
+.booking-table td {
+        vertical-align: top;
+}
+
+.booking-table td img {
+    width: 300x;
+    height: 400px;
+}
+
+
 .booking-title > h1 {
     width: 300px;
     margin: 0;
@@ -470,6 +494,7 @@ to {opacity: 1}
 .booking-date > h2 {
     width: 250px;
     margin: auto;
+    margin-bottom: 15px;
     text-align: center;
     border-width: 0 0 2px 0;
     border-color: #EBEBEB;
@@ -481,5 +506,6 @@ to {opacity: 1}
     padding: 10px 10px;
 	border: solid;
 	border-radius: 8px;
-	border-width: 2px 2px 2px 2px;
+    border-width: 2px 2px 2px 2px;
+    margin-bottom: 30px;
 }

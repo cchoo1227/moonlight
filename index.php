@@ -1,4 +1,7 @@
-<?php include 'getMovies.php';?>
+<?php include 'getMovies.php';
+session_start();
+$_SESSION['cart'] = [];
+$_SESSION['booking'] = [];?>
 
 <!DOCTYPE html>
 
