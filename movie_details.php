@@ -1,3 +1,4 @@
+<?php include 'getMovies.php';?>
 <!DOCTYPE html>
 
 <head>
@@ -28,39 +29,13 @@
     <div class="container">
         <table>
             <tr>
-            <?php
-$servername = "localhost";
-$username = "f38ee";
-$password = "f38ee";
-$dbname = "f38ee";
-$movie = $_GET['movie'];
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-
-$getMovie = "SELECT * FROM movies WHERE movieId  = " .$movie;
-$resultsMovie = mysqli_query($conn, $getMovie);
-
-if (mysqli_num_rows($resultsMovie) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($resultsMovie)) {    
-      
-        echo "<td><img src='" .$row["image"]. "'></td>";
-        echo "<td><h1>" .$row["name"]. "</h1>";
-        echo "<div class='rating'>" .$row["rating"]. "</div>";
-        echo "<p>" .$row["desc"]. "</p></td>";
-        
-    }
-
-} else {
-    echo "Movie not found";
-}
-?>
+            <?php 
+                $movie = $_GET['movie'];
+            ?>
+            <td><img src="<?php echo $movieArray[$movie-1]['image']; ?>"></td>
+            <td><h1><?php echo $movieArray[$movie-1]['name']; ?></h1>
+            <div class='rating'><?php echo $movieArray[$movie-1]['rating']; ?></div>
+            <p><?php echo $movieArray[$movie-1]['desc']; ?></p></td>
             </tr>
         </table>
 
@@ -69,36 +44,51 @@ if (mysqli_num_rows($resultsMovie) > 0) {
             <?php
 
                 $dateArray = [];
-                $getDates = "SELECT DISTINCT(date) FROM screening WHERE movieId  = " .$movie;
+                $getDates = "SELECT DISTINCT(date) FROM screening WHERE movieId  = " .$movie. " ORDER BY `date` ASC";
                 $resultsDates = mysqli_query($conn, $getDates);
-
                 if (mysqli_num_rows($resultsDates) > 0) {
                     // output data of each row
                     while($row = mysqli_fetch_assoc($resultsDates)) {    
-                        array_push($dateArray, $row["date"]);
+                        if (strtotime($row["date"]) > strtotime('now')) {
+                            array_push($dateArray, $row["date"]);
+                        }
                     }
                 }
 
                 foreach ($dateArray as $date) {
+
+                    $timeslots = [];
+
                     echo "<tr><td><h3>" .date_format(date_create($date),"D, d M Y"). "</h3></td></tr>";
-                    echo "<tr class = 'timeslots'>";
-                    $getScreening = "SELECT * FROM screening WHERE movieId  = " .$movie . " AND `date` = '" .$date. "'";
-                    $resultsScreening = mysqli_query($conn, $getScreening);
-                    if (mysqli_num_rows($resultsScreening) > 0) {
-                        // output data of each row
-                        while($rowA = mysqli_fetch_assoc($resultsScreening)) {
-                            $getTimes = "SELECT * FROM timeslots WHERE timeslotId  = " .$rowA["timeslotId"];
-                            $resultsTimes = mysqli_query($conn, $getTimes);
-                            if (mysqli_num_rows($resultsTimes) > 0) {
-                                // output data of each row
-                                while($rowB = mysqli_fetch_assoc($resultsTimes)) {  
-                                    echo "<td><form action='get'><button name='screening' type='submit' value='" .$rowA["screeningId"]. "' formaction='seat_select.php'>" .date_format(date_create($rowB["time"]),"h:i"). "</button></form></td>";
-                                }
+
+                    foreach ($screeningsArray as $screening) {
+                        
+                        if (($screening["movieId"] == $movie) && ($screening["date"] == $date)) {
+                            array_push($timeslots, $screening["screeningId"]);
                         }
+
                     }
+
+                    echo "<tr class = 'timeslots'>";
+                    
+                    foreach ($timeslots as $timeslot) {
+
+                        foreach ($screeningsArray as $screening) {
+
+                            if ($screening["screeningId"] == $timeslot) {
+
+                                echo "<td><form action='get'><button name='screening' type='submit' value='" .$screening["screeningId"]. "' formaction='seat_select.php'>Screen " .$screening["screen"]. ", " .date_format(date_create($screening["time"]),"H:i"). "</button></form></td>";
+
+                            }
+
+                        }
+
+                    }
+
                     echo "</tr>";
+                    
+
                 }
-            }
 
             mysqli_close($conn);
             ?>

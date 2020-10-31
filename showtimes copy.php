@@ -32,16 +32,37 @@
                 <!--TODO: print each date tab toggle using a loop, replace ID & text-->
                 <!--start php-->
                 <?php
+                    $servername = "localhost";
+                    $username = "f38ee";
+                    $password = "f38ee";
+                    $dbname = "f38ee";
+
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $dbname);
+                    // Check connection
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    $movieArray = [];
+                    $getMovies = "SELECT name FROM movies";
+                    $resultsMovies = mysqli_query($conn, $getMovies);
+
+                    if (mysqli_num_rows($resultsMovies) > 0) {
+                        // output data of each row
+                        while($rowB = mysqli_fetch_assoc($resultsMovies)) {    
+                            array_push($movieArray, $rowB["name"]);
+                        }
+                    }
 
                     $dateArray = [];
-                    $getDates = "SELECT DISTINCT(date) FROM screening ORDER BY `date` ASC";
+                    $getDates = "SELECT DISTINCT(date) FROM screening";
                     $resultsDates = mysqli_query($conn, $getDates);
+    
                     if (mysqli_num_rows($resultsDates) > 0) {
                         // output data of each row
                         while($row = mysqli_fetch_assoc($resultsDates)) {    
-                            if (strtotime($row["date"]) > strtotime('now')) {
-                                array_push($dateArray, $row["date"]);
-                            }
+                            array_push($dateArray, $row["date"]);
                         }
                     }
 
@@ -58,49 +79,33 @@
             </ul>
         </div>
 
+        <!--TODO: print each date tab using a loop, replace ID, title of movies & timeslots (use another loop for list of movie & timeslots)-->
+        <!--start php-->
         <?php
-
-            foreach ($dateArray as $date) {
-
+            foreach ($dateArray as $date) { 
+                $print = false;
                 echo "<table class='date-tab' id='" .date_format(date_create($date),"d-M"). "-tab'>";
-
-                foreach ($movieArray as $movie) {
-
-                    $timeslots = [];
-
-                    echo "<tr><td><h3>" .$movie["name"]. "</h3></td></tr>";
-                    echo "<tr class = 'timeslots'>";
-
-                    foreach ($screeningsArray as $screening) {
-                    
-                        if (($screening["movieId"] == $movie["movieId"]) && ($screening["date"] == $date)) {
-                            array_push($timeslots, $screening["screeningId"]);
-                        }
-    
-                    }
-
-                                        
-                    foreach ($timeslots as $timeslot) {
-
-                        foreach ($screeningsArray as $screening) {
-
-                            if ($screening["screeningId"] == $timeslot) {
-
-                                echo "<td><form action='get'><button name='screening' type='submit' value='" .$screening["screeningId"]. "' formaction='seat_select.php'>Screen " .$screening["screen"]. ", " .date_format(date_create($screening["time"]),"H:i"). "</button></form></td>";
-
+                for($movieId = 1; $movieId < count($movieArray); $movieId++) {
+                    echo "<tr><td><h3>" .$movieArray[$movieId]. "</h3></td></tr>";
+                    echo "<tr class='timeslots'>";
+                    $getScreening = "SELECT * FROM screening WHERE `date` = '" .$date. "' AND movieId = " .$movieId;
+                    $resultsScreening = mysqli_query($conn, $getScreening);  
+                    if (mysqli_num_rows($resultsScreening) > 0) {
+                        // output data of each row
+                        while($rowA = mysqli_fetch_assoc($resultsScreening)) {
+                            $getTimes = "SELECT * FROM timeslots WHERE timeslotId  = " .$rowA["timeslotId"];
+                            $resultsTimes = mysqli_query($conn, $getTimes);
+                            if (mysqli_num_rows($resultsTimes) > 0) {
+                                // output data of each row
+                                while($rowB = mysqli_fetch_assoc($resultsTimes)) {  
+                                    echo "<td><form action='get'><button name='screening' type='submit' value='" .$rowA["screeningId"]. "' formaction='seat_select.php'>" .date_format(date_create($rowB["time"]),"H:i"). "</button></form></td>";
+                                }
                             }
-
                         }
-
-                    }
-
-                    echo "</tr>";
-
-
+                    }    
+                    echo "</tr>";  
                 }
-
                 echo "</table>";
-
             }
 
         ?>

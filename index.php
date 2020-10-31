@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php include 'getMovies.php';?>
 
 <!DOCTYPE html>
 
@@ -9,50 +7,6 @@ session_start();
 </head>
 
 <body>
-
-<?php
-
-$servername = "localhost";
-$username = "f38ee";
-$password = "f38ee";
-$dbname = "f38ee";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-//get and store movies, coming soon only once
-//TODO: what is user accesses movies page before home page???
-
-$getMovie = "SELECT * FROM movies";
-$resultsMovie = mysqli_query($conn, $getMovie);
-$_SESSION["movies"] = []; 
-
-if (mysqli_num_rows($resultsMovie) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($resultsMovie)) {    
-
-        array_push($_SESSION["movies"], $row);
-
-    }
-}
-
-$getComingSoon = "SELECT image FROM comingSoon";
-$resultsComingSoon = mysqli_query($conn, $getComingSoon);
-$_SESSION["comingSoon"] = [];
-
-if (mysqli_num_rows($resultsComingSoon) > 0) {
-    // output data of each row
-    while($rowB = mysqli_fetch_row($resultsComingSoon)) {    
-        array_push($_SESSION["comingSoon"], $rowB[0]);
-    }
-}
-
-?>
-
 <!--start of navbar-->
 <div id="nav">
     <div class="container">
@@ -69,10 +23,10 @@ if (mysqli_num_rows($resultsComingSoon) > 0) {
 <!--end of navbar-->
 
 <!--start of banner-->
-<!--TO WEIFAN: You can delete this entire BANNER part since you won't need it. You just need to use the MAIN CONTENT part below.-->
 <div id="banner">
 
-    <!-- Full-width images with number and caption text -->
+<!--TODO: MAKE BANNER DYNAMIC?-->
+    
     <div class="mySlides fade">
         <div class="container">
             <div class="title">Tenet</div>
@@ -98,15 +52,15 @@ if (mysqli_num_rows($resultsComingSoon) > 0) {
 <!--end of banner-->
 
 <!--start of main content-->
-<div class="section" id="now-showing"> <!--TO WEIFAN: This is a 'SECTION' div. Use one 'SECTION' div for every horizontal section of content. E.g. I used one section for 'Now Showing' and another section for 'Coming Soon'.-->
-    <div class="container"> <!--TO WEIFAN: This is a 'CONTAINER' div. There is one 'CONTAINER' div within every 'SECTION' div. Replace ALL the code in the 'CONTAINER' div with your own code.-->
+<div class="section" id="now-showing"> 
+    <div class="container"> 
         <div class="underlined-titles">
             <h2>NOW SHOWING</h2>
         </div>
         <div class="flex movie-posters movie-tab" id="now-showing-tab"> 
             <?php for($i = 0; $i < 4 ; $i++): ?> 
                 <div>   
-                    <a href="movie_details.php?movie=<?php echo $i + 1; ?>"><img src="<?php echo $_SESSION["movies"][$i]["image"]; ?>"></a>
+                    <a href="movie_details.php?movie=<?php echo $i + 1; ?>"><img src="<?php echo $movieArray[$i]["image"]; ?>"></a>
                 </div>
             <?php endfor; ?>           
         </div>
@@ -121,7 +75,7 @@ if (mysqli_num_rows($resultsComingSoon) > 0) {
         <div class="flex movie-posters movie-tab" id="now-showing-tab"> 
             <?php for($i = 0; $i < 4 ; $i++): ?> 
                 <div>   
-                    <img src="<?php echo $_SESSION["comingSoon"][$i]; ?>">
+                    <img src="<?php echo $comingSoonArray[$i]['image']; ?>">
                 </div>
             <?php endfor; ?>           
         </div>
@@ -161,5 +115,6 @@ if (mysqli_num_rows($resultsComingSoon) > 0) {
 <!--end of footer-->
 
 <script src="scripts/home-banner.js"></script>
+<?php mysqli_close($conn); ?>
 </body>
 

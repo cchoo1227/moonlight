@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php include 'getMovies.php';?>
 
 <!DOCTYPE html>
 
@@ -10,7 +8,6 @@ session_start();
 </head>
 
 <body>
-
 <!--start of navbar-->
 <div id="nav">
     <div class="container">
@@ -37,7 +34,7 @@ session_start();
             </ul>
         </div>
         <div class="flex movie-posters movie-tab" id="now-showing-tab"> 
-            <?php foreach($_SESSION["movies"] as $movie): ?> 
+            <?php foreach($movieArray as $movie): ?> 
                 <div>   
                     <img src="<?php echo $movie['image']; ?>">
                     <h3><?php echo $movie['name']; ?></h3>
@@ -49,15 +46,14 @@ session_start();
             <?php endforeach; ?>           
         </div>
         <div class="flex movie-posters movie-tab" id="coming-soon-tab">
-            <?php foreach($_SESSION["comingSoon"] as $comingSoon): ?> 
+            <?php foreach($comingSoonArray as $comingSoon): ?> 
                 <div>   
-                    <img src="<?php echo $comingSoon; ?>">
+                    <img src="<?php echo $comingSoon['image']; ?>">
                 </div>
             <?php endforeach; ?> 
         </div>
     </div>
 </div>
-
 
 <!--end of main content-->
 
