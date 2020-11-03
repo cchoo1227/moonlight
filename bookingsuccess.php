@@ -106,7 +106,35 @@ $bookingIdsString = implode("," , $bookingIds);
 //store customer info together with their bookings
 $sql = "INSERT INTO particulars(bookingarray, customername, dateofbirth, contactnumber, email, transactionKey) VALUES ('" .$bookingIdsString. "','" .$customername. "','" .$dateofbirth. "', '" .$contactnumber. "','" .$email. "','" .$transactionKey. "')";
 if(mysqli_query($conn, $sql)){
-    echo "<h2>Records added successfully.</h2> <p>A confirmation email has been sent to " .$email. ".</p>";
+    
+    echo "<h2>Records added successfully.</h2>";
+
+//send email
+$emailMessage = "";
+
+$j = 1;
+
+foreach ($_SESSION["bookingItem"] as $bookingItem) {
+    
+    $emailMessage = $emailMessage. "Booking No. " .$j. " - Movie: " .$movieArray[$screeningsArray[$bookingItem["screeningId"]-1]["movieId"]-1]["name"]. ", Time: " .$screeningsArray[$bookingItem["screeningId"]-1]["time"]. ", Date: " .$screeningsArray[$bookingItem["screeningId"]-1]["date"]. ", Seats: " .$bookingItem["seats"]. "\r\n";
+    $j++;
+}
+
+
+$emailHeader = "Hi " .$customername. "! Thanks for booking with Moonlight Cinemas. Please see below for your booking details.";
+
+        $to      = 'f38ee@localhost';
+    $subject = 'Booking Confimration';
+    $message = $emailHeader. "\r\n" .$emailMessage;
+    $headers = 'From: f38ee@localhost' . "\r\n" .
+        'Reply-To: f38ee@localhost' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+    mail($to, $subject, $message, $headers,'-ff38ee@localhost');
+    echo ("An confirmation email has been sent to : ".$to);
+    
+    unset($_SESSION["bookingItem"]);
+
 } else{
     echo "<h2>Booking failed. Please try again.</h2><br> <a href='cart.php' class='button'>Back to Cart</a>";
 }
