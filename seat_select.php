@@ -25,11 +25,11 @@ session_start(); ?>
             $movieName = $movieArray[$screening["movieId"] - 1]["name"]; 
             $movieImage = $movieArray[$screening["movieId"] - 1]["image"];    
             $date = $screening["date"];
-            $seatsTaken = $pieces = explode(",", $screening["seatsTaken"]);;
-
+            $seatsTaken = $pieces = explode(",", $screening["seatsTaken"]);
         }
 
     }
+    
 
     $seatSections = array("A", "B", "C", "D", "E");
 
@@ -56,7 +56,7 @@ session_start(); ?>
     $seats = $params["seats"];
     $time = $screeningsArray[$screeningId-1]["time"];
 
-    $cartItem = array("ticketType" => $ticketType, "totalPrice" => $totalPrice, "seats" => $seats, "movieName" => $movieName, "date" => $date, "time" => $time);
+    $cartItem = array("ticketType" => $ticketType, "totalPrice" => $totalPrice, "seats" => $seats, "movieName" => $movieName, "date" => $date, "time" => $time, "screeningId" => $screeningId);
     $add = true;
 
     foreach($cartItem as $param) {

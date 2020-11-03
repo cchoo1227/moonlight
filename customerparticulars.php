@@ -1,3 +1,5 @@
+<?php session_start();
+include 'php/getMovies.php';?>
 <!DOCTYPE html>
 
 <head>
@@ -7,27 +9,48 @@
 <body>
 
 <!--start of navbar-->
-<div id="nav">
-    <div class="container">
-        <img src="images/logo_light.svg">
-        <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">MOVIES</a></li>
-            <li><a href="#">SHOWTIMES</a></li>
-            <li><a href="#">CONTACT</a></li>
-            <li><a href="#"><img width="24px" height="24px" src="images/cart_outlined.svg"></a></li>
-        </ul>
-    </div>
-</div>
+<?php include 'navbar.php' ?>
 <!--end of navbar-->
 
-<div class="section" id="customer-particulars"> <!--TO WEIFAN: This is a 'SECTION' div. Use one 'SECTION' div for every horizontal section of content. E.g. I used one section for 'Now Showing' and another section for 'Coming Soon'.-->
-    <div class="container"> <!--TO WEIFAN: This is a 'CONTAINER' div. There is one 'CONTAINER' div within every 'SECTION' div. Replace ALL the code in the 'CONTAINER' div with your own code.-->
+<?php 
+
+$query  = explode('&', $_SERVER['QUERY_STRING']);
+$params = array();
+
+foreach( $query as $param )
+{
+// prevent notice on explode() if $param has no '='
+if (strpos($param, '=') === false) $param += '=';
+
+list($name, $value) = explode('=', $param, 2);
+$params[urldecode($name)][] = urldecode($value);
+}
+
+$_SESSION["bookingItem"] = [];
+
+$i = 0;
+
+foreach ($params["selectedCart"] as $selectedCartItem) {
+
+    $cartItem = $_SESSION["cart"][(int)$selectedCartItem];
+
+    $seatString = implode("," , $cartItem["seats"]) ;
+
+    array_push($_SESSION["bookingItem"], array("cartIndex" => $i, "screeningId" => $cartItem["screeningId"], "ticketType" => $cartItem["ticketType"], "totalPrice" => $cartItem["totalPrice"], "seats" => $seatString));
+
+    $i++;
+
+}
+
+?>
+
+<div class="section" id="customer-particulars">
+    <div class="container"> 
         <div class="particulars-title">
             <h1>Customer Particulars</h1>
         </div>
 		
-        <form method="POST" action="customerparticulars.php" id="particularsForm">
+        <form method="POST" action="bookingsuccess.php" id="particularsForm">
         <table class="customer-particular">
             <tr>
                 <td>Name*:</td>

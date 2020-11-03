@@ -79,7 +79,7 @@ $_SESSION['cart'] = array_values($_SESSION['cart']);
 		  </tbody>
         </table>
         <button type="submit" formaction="<?php echo $_SERVER['PHP_SELF']?>">Delete</button>
-        <button type="submit" formaction="#">Make Payment</button>
+        <button type="submit" formaction="customerparticulars.php">Make Payment</button>
 		</form>
     </div>
 </div> 
