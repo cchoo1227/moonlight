@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 30, 2020 at 04:38 AM
+-- Generation Time: Nov 03, 2020 at 08:17 PM
 -- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.11
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `movies` (
   `rating` varchar(5) NOT NULL,
   `image` varchar(200) NOT NULL,
   PRIMARY KEY (`movieId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `movies`
@@ -47,8 +47,7 @@ INSERT INTO `movies` (`movieId`, `name`, `desc`, `rating`, `image`) VALUES
 (5, 'Beauty and the Beast', 'An arrogant young prince (Robby Benson) and his castle''s servants fall under the spell of a wicked enchantress, who turns him into the hideous Beast until he learns to love and be loved in return. The spirited, headstrong village girl Belle (Paige O''Hara) enters the Beast''s castle after he imprisons her father Maurice (Rex Everhart). With the help of his enchanted servants, including the matronly Mrs. Potts (Angela Lansbury), Belle begins to draw the cold-hearted Beast out of his isolation.', 'PG13', 'images/beauty-poster.jpg'),
 (6, 'Avengers: Endgame', 'Adrift in space with no food or water, Tony Stark sends a message to Pepper Potts as his oxygen supply starts to dwindle. Meanwhile, the remaining Avengers -- Thor, Black Widow, Captain America and Bruce Banner -- must figure out a way to bring back their vanquished allies for an epic showdown with Thanos -- the evil demigod who decimated the planet and the universe.', 'PG13', 'images/avengers-poster.jpg'),
 (7, 'Aladdin', 'Aladdin is a lovable street urchin who meets Princess Jasmine, the beautiful daughter of the sultan of Agrabah. While visiting her exotic palace, Aladdin stumbles upon a magic oil lamp that unleashes a powerful, wisecracking, larger-than-life genie. As Aladdin and the genie start to become friends, they must soon embark on a dangerous mission to stop the evil sorcerer, Jafar, from overthrowing young Jasmine''s kingdom.', 'PG13', 'images/aladdin-poster.jpg'),
-(8, 'Blade Runner 2049', 'Officer K (Ryan Gosling), a new blade runner for the Los Angeles Police Department, unearths a long-buried secret that has the potential to plunge what''s left of society into chaos. His discovery leads him on a quest to find Rick Deckard (Harrison Ford), a former blade runner who''s been missing for 30 years.', 'R', 'images/bladerunner-poster.jpg'),
-(9, 'IT: Chapter 2', 'After 27 years, the Losers Club receive a call from their friend Mike Hanlon that Pennywise is back. They decide to honour their promise and return to their old town to end the evil clown for good.', 'PG', 'https://cdn.collider.com/wp-content/uploads/2019/07/it-chapter-two-new-poster.jpg');
+(8, 'Blade Runner 2049', 'Officer K (Ryan Gosling), a new blade runner for the Los Angeles Police Department, unearths a long-buried secret that has the potential to plunge what''s left of society into chaos. His discovery leads him on a quest to find Rick Deckard (Harrison Ford), a former blade runner who''s been missing for 30 years.', 'R', 'images/bladerunner-poster.jpg');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
