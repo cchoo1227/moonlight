@@ -109,7 +109,6 @@ foreach ($params["selectedCart"] as $selectedCartItem) {
     </div>
 </div>
 <!--end of footer-->
-
-<script src="scripts/home-banner.js"></script>
+<script type = "text/javascript"  src = "scripts/checkinput.js"></script> 
 </body>
 
