@@ -27,10 +27,17 @@ if (!$conn) {
 
 foreach ($form as $key => $value) {
 
-    if ($value !== NULL || $value !== "") {
+    if ($value === NULL || $value === "") {
+        echo "no " .$key;
+    }
+
+    else {
+
         $sql = "UPDATE " .$movieType. " SET " .$key. " = '" . $value . "' WHERE " .$idType. " = " .$id ;
         mysqli_query($conn, $sql);
+
     }
+
 
 }
 mysqli_close($conn);
