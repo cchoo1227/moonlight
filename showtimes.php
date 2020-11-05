@@ -4,6 +4,7 @@
 <head>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts/tabs.js"></script>
+    <title>Moonlight Cinemas</title>
 </head>
 
 <body>

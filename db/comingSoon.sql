@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 30, 2020 at 04:38 AM
+-- Generation Time: Nov 05, 2020 at 07:01 PM
 -- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.11
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `comingSoon` (
 --
 
 INSERT INTO `comingSoon` (`comingSoonId`, `name`, `desc`, `rating`, `image`) VALUES
-(2, 'A Star is Born', 'After falling in love with struggling artist Ally, Jackson, a musician, coaxes her to follow her dreams, while he battles with alcoholism and his personal demons.', 'NC16', 'images/starisborn-poster.jpg'),
+(2, 'A Star is Born', 'After falling in love with struggling artist Ally, Jackson, a musician, coaxes her to follow her dreams, while he battles with alcoholism and his personal demons.', 'PG', ''),
 (3, 'Birds of Prey', 'It''s open season on Harley Quinn when her explosive breakup with the Joker puts a big fat target on her back. Unprotected and on the run, Quinn faces the wrath of narcissistic crime boss Black Mask, his right-hand man, Victor Zsasz, and every other thug in the city. But things soon even out for Harley when she becomes unexpected allies with three deadly women -- Huntress, Black Canary and Renee Montoya.', 'PG13', 'images/birdsofprey-poster.jpg'),
 (4, 'Dora and the Lost City of Gold', 'Dora Marquez embarks on a mission with her monkey, Boots, and her friends to rescue her missing parents and solve the mystery of a fabled city of gold.', 'PG', 'images/dora-poster.jpg');
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 03, 2020 at 08:18 PM
+-- Generation Time: Nov 05, 2020 at 07:01 PM
 -- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.11
 
@@ -42,12 +42,8 @@ CREATE TABLE IF NOT EXISTS `particulars` (
 --
 
 INSERT INTO `particulars` (`bookingarray`, `customername`, `dateofbirth`, `contactnumber`, `email`, `transactionKey`) VALUES
-('6,7', 'hi', '2020-11-18', '123', 'ss@heh.com', '05465021'),
-('5', 'ddasdd', '2020-11-12', '333', 'ss@heh.com', '07707582'),
-('4', 'ssssss', '2020-11-13', '123', 'ss@heh.com', '22959142'),
-('3', 'ddd', '2020-10-26', '123', 'ss@heh.com', '33390639'),
-('1,2', 'Choo', '2020-10-05', '123', 'ccc@dsd.com', '49261110'),
-('8,9', 'Lucy', '2020-10-13', '123', 'ss@heh.com', '70699014');
+('1', 'Choo', '1998-12-27', '90000000', 'ss@heh.com', '56153986'),
+('2,3,4', 'Hi', '1993-12-15', '98765432', 'ss@hehsss.com', '92202274');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

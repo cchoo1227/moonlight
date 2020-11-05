@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 03, 2020 at 08:17 PM
+-- Generation Time: Nov 05, 2020 at 07:01 PM
 -- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.11
 
@@ -33,14 +33,14 @@ CREATE TABLE IF NOT EXISTS `movies` (
   `rating` varchar(5) NOT NULL,
   `image` varchar(200) NOT NULL,
   PRIMARY KEY (`movieId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `movies`
 --
 
 INSERT INTO `movies` (`movieId`, `name`, `desc`, `rating`, `image`) VALUES
-(1, 'Black Panther', 'After the death of his father, T''Challa returns home to the African nation of Wakanda to take his rightful place as king. When a powerful enemy suddenly reappears, T''Challa''s mettle as king -- and as Black Panther -- gets tested when he''s drawn into a conflict that puts the fate of Wakanda and the entire world at risk. Faced with treachery and danger, the young king must rally his allies and release the full power of Black Panther to defeat his foes and secure the safety of his people.', 'PG13', 'images/blackpanther-poster.jpg\r\n'),
+(1, 'Black Panther', 'After the death of his father, T''Challa returns home to the African nation of Wakanda to take his rightful place as king. When a powerful enemy suddenly reappears, T''Challa''s mettle as king -- and as Black Panther -- gets tested when he''s drawn into a conflict that puts the fate of Wakanda and the entire world at risk. Faced with treachery and danger, the young king must rally his allies and release the full power of Black Panther to defeat his foes and secure the safety of his people.', 'PG', ''),
 (2, 'Mulan', 'To save her ailing father from serving in the Imperial Army, a fearless young woman disguises herself as a man to battle northern invaders in China.', 'PG13', 'images/mulan-poster.jpg\r\n'),
 (3, 'Parasite', 'Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.', 'R', 'images/parasite-poster.jpg'),
 (4, 'Tenet', 'The future has declared war on the present because it''s upset about climate change. To do so, it uses a technology called “inversion,” by which objects and people can travel backward in the flow of time by reversing their entropy. A secret agent embarks on a dangerous, time-bending mission to prevent the start of World War III.', 'PG13', 'images/tenet-poster.jpg'),

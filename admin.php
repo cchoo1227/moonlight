@@ -7,6 +7,7 @@ include 'php/getMovies.php';?>
 <head>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts/admin.js"></script>
+    <title>Moonlight Cinemas</title>
 </head>
 
 <body>

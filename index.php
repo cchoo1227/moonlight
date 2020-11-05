@@ -7,6 +7,7 @@ $_SESSION['booking'] = [];?>
 
 <head>
     <link rel="stylesheet" href="styles.css">
+    <title>Moonlight Cinemas</title>
 </head>
 
 <body>

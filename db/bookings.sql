@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 03, 2020 at 08:17 PM
+-- Generation Time: Nov 05, 2020 at 07:00 PM
 -- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.11
 
@@ -34,22 +34,17 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   `seats` varchar(150) NOT NULL,
   `transactionKey` varchar(30) NOT NULL,
   PRIMARY KEY (`bookingId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `bookings`
 --
 
 INSERT INTO `bookings` (`bookingId`, `ticketType`, `totalPrice`, `screeningId`, `seats`, `transactionKey`) VALUES
-(1, 'adult', 40, 1, 'C3,C4,E1,E2', '49261110'),
-(2, 'student', 12, 6, 'E1,E2', '49261110'),
-(3, 'adult', 20, 2, 'E3,E4', '33390639'),
-(4, 'adult', 20, 2, 'E5,E6', '22959142'),
-(5, 'student', 12, 1, 'E7,E8', '07707582'),
-(6, 'adult', 20, 1, 'D7,D8', '05465021'),
-(7, 'adult', 20, 7, 'E4,E5', '05465021'),
-(8, 'adult', 20, 3, 'E5,E6', '70699014'),
-(9, 'adult', 20, 3, 'E8,E9', '70699014');
+(1, 'adult', 20, 4, 'E9,E10', '56153986'),
+(2, 'adult', 20, 27, 'E5,E6', '92202274'),
+(3, 'student', 12, 15, 'D10,E10', '92202274'),
+(4, 'adult', 20, 4, 'E5,E6', '92202274');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -6,6 +6,7 @@ session_start(); ?>
 <head>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts/booking.js"></script>
+    <title>Moonlight Cinemas</title>
 </head>
 
 <body>
