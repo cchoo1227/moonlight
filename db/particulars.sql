@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 05, 2020 at 07:01 PM
+-- Generation Time: Nov 10, 2020 at 03:30 PM
 -- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.11
 
@@ -42,8 +42,8 @@ CREATE TABLE IF NOT EXISTS `particulars` (
 --
 
 INSERT INTO `particulars` (`bookingarray`, `customername`, `dateofbirth`, `contactnumber`, `email`, `transactionKey`) VALUES
-('1', 'Choo', '1998-12-27', '90000000', 'ss@heh.com', '56153986'),
-('2,3,4', 'Hi', '1993-12-15', '98765432', 'ss@hehsss.com', '92202274');
+('5', 'Choo', '1995-12-12', '90000000', 'ccc@dsd.com', '18829369'),
+('6,7', 'Lyn', '1993-11-11', '90001111', 'ccc@dsd.com', '99979798');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

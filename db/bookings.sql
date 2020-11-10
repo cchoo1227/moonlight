@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 05, 2020 at 07:00 PM
+-- Generation Time: Nov 10, 2020 at 03:30 PM
 -- Server version: 5.5.44-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.11
 
@@ -34,17 +34,16 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   `seats` varchar(150) NOT NULL,
   `transactionKey` varchar(30) NOT NULL,
   PRIMARY KEY (`bookingId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `bookings`
 --
 
 INSERT INTO `bookings` (`bookingId`, `ticketType`, `totalPrice`, `screeningId`, `seats`, `transactionKey`) VALUES
-(1, 'adult', 20, 4, 'E9,E10', '56153986'),
-(2, 'adult', 20, 27, 'E5,E6', '92202274'),
-(3, 'student', 12, 15, 'D10,E10', '92202274'),
-(4, 'adult', 20, 4, 'E5,E6', '92202274');
+(5, 'adult', 20, 6, 'E6,E7', '18829369'),
+(6, 'student', 12, 6, 'E2,E3', '99979798'),
+(7, 'adult', 20, 2, 'E2,E3', '99979798');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
